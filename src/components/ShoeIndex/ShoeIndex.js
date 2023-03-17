@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { WEIGHTS } from '../../constants';
+import { QUERIES, WEIGHTS } from '../../constants';
 
 import Breadcrumbs from '../Breadcrumbs';
 import Select from '../Select';
@@ -9,10 +9,24 @@ import Spacer from '../Spacer';
 import ShoeSidebar from '../ShoeSidebar';
 import ShoeGrid from '../ShoeGrid';
 
+
+
 const ShoeIndex = ({ sortId, setSortId }) => {
+
+  const BreadcrumbsChildren = <>
+    <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
+    <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
+    <Breadcrumbs.Crumb href="/sale/shoes">
+      Shoes
+    </Breadcrumbs.Crumb>
+  </>
+
   return (
     <Wrapper>
       <MainColumn>
+        <MobileBreadcrumbs>
+          {BreadcrumbsChildren}
+        </MobileBreadcrumbs>
         <Header>
           <Title>Running</Title>
           <Select
@@ -27,17 +41,13 @@ const ShoeIndex = ({ sortId, setSortId }) => {
         <Spacer size={32} />
         <ShoeGrid />
       </MainColumn>
-      <LeftColumn>
+      <DesktopLeftColumn>
         <Breadcrumbs>
-          <Breadcrumbs.Crumb href="/">Home</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale">Sale</Breadcrumbs.Crumb>
-          <Breadcrumbs.Crumb href="/sale/shoes">
-            Shoes
-          </Breadcrumbs.Crumb>
+          {BreadcrumbsChildren}
         </Breadcrumbs>
         <Spacer size={42} />
         <ShoeSidebar />
-      </LeftColumn>
+      </DesktopLeftColumn>
     </Wrapper>
   );
 };
@@ -47,10 +57,17 @@ const Wrapper = styled.div`
   flex-direction: row-reverse;
   align-items: baseline;
   gap: 32px;
+
+  @media ${QUERIES.tabletAndDown} {
+    flex-direction: row;
+  }
 `;
 
-const LeftColumn = styled.div`
+const DesktopLeftColumn = styled.div`
   flex-basis: 248px;
+  @media ${QUERIES.tabletAndDown} {
+    display: none;
+  }
 `;
 
 const MainColumn = styled.div`
@@ -67,5 +84,12 @@ const Title = styled.h2`
   font-size: 1.5rem;
   font-weight: ${WEIGHTS.medium};
 `;
+
+const MobileBreadcrumbs = styled(Breadcrumbs)`
+  display: none;
+  @media ${QUERIES.tabletAndDown} {
+    display: flex;
+  }
+`
 
 export default ShoeIndex;

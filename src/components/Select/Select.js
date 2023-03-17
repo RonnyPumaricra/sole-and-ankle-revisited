@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components/macro';
 
-import { COLORS, WEIGHTS } from '../../constants';
+import { COLORS, QUERIES, WEIGHTS } from '../../constants';
 
 import Icon from '../Icon';
 
@@ -13,6 +13,8 @@ const Select = ({ label, value, children, ...delegated }) => {
 
   const displayedValue = selectedChild.props.children;
 
+  // Could use this for styling with StyledComponents
+  // <Wrapper {...delegated}>
   return (
     <Wrapper>
       <VisibleLabel>{label}</VisibleLabel>
@@ -36,6 +38,12 @@ const Select = ({ label, value, children, ...delegated }) => {
 const Wrapper = styled.label`
   display: flex;
   align-items: baseline;
+  @media ${QUERIES.tabletAndDown} {
+    transform: translateY(-12px);
+  }
+  @media ${QUERIES.phoneAndDown} {
+    display: none;
+  }
 `;
 
 const VisibleLabel = styled.span`
