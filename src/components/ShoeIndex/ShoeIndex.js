@@ -24,19 +24,23 @@ const ShoeIndex = ({ sortId, setSortId }) => {
   return (
     <Wrapper>
       <MainColumn>
-        <MobileBreadcrumbs>
-          {BreadcrumbsChildren}
-        </MobileBreadcrumbs>
         <Header>
-          <Title>Running</Title>
-          <Select
-            label="Sort"
-            value={sortId}
-            onChange={(ev) => setSortId(ev.target.value)}
-          >
-            <option value="newest">Newest Releases</option>
-            <option value="price">Price</option>
-          </Select>
+          <div>
+            <MobileBreadcrumbs>
+              {BreadcrumbsChildren}
+            </MobileBreadcrumbs>
+            <Title>Running</Title>
+          </div>
+          <DesktopSortFilter>
+            <Select
+              label="Sort"
+              value={sortId}
+              onChange={(ev) => setSortId(ev.target.value)}
+            >
+              <option value="newest">Newest Releases</option>
+              <option value="price">Price</option>
+            </Select>
+          </DesktopSortFilter>
         </Header>
         <Spacer size={32} />
         <ShoeGrid />
@@ -78,6 +82,9 @@ const Header = styled.header`
   display: flex;
   justify-content: space-between;
   align-items: baseline;
+  @media ${QUERIES.tabletAndDown} {
+    align-items: flex-end;
+  }
 `;
 
 const Title = styled.h2`
@@ -89,6 +96,12 @@ const MobileBreadcrumbs = styled(Breadcrumbs)`
   display: none;
   @media ${QUERIES.tabletAndDown} {
     display: flex;
+  }
+`
+
+const DesktopSortFilter = styled.div`
+  @media ${QUERIES.phoneAndDown} {
+    display: none;
   }
 `
 
