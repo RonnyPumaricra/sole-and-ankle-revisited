@@ -45,7 +45,7 @@ const Header = () => {
               id={"search"}
             />
           </UnstyledButton>
-          <UnstyledButton>
+          <UnstyledButton onClick={() => setShowMobileMenu(true)}>
             <Icon
               size={24}
               id={"menu"}
