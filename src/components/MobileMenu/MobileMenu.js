@@ -6,7 +6,6 @@ import { DialogOverlay, DialogContent } from '@reach/dialog';
 import UnstyledButton from '../UnstyledButton';
 import Icon from '../Icon';
 import VisuallyHidden from '../VisuallyHidden';
-import { COLORS, WEIGHTS } from '../../constants';
 
 const MobileMenu = ({ isOpen, onDismiss }) => {
   return (
@@ -43,7 +42,7 @@ const MobileMenu = ({ isOpen, onDismiss }) => {
 const StyledOverlay = styled(DialogOverlay)`
   position: absolute;
   inset: 0;
-  background-color: hsl(220deg 5% 40% / 80%);
+  background-color: hsl(var(--gray-900-fragment) / 80%);
 `
 
 const MenuWrapper = styled(DialogContent)`
@@ -55,7 +54,7 @@ const MenuWrapper = styled(DialogContent)`
   width: min(300px, 100%);
   padding: 32px;
   padding-right: 22px;
-  background: ${COLORS.white};
+  background: var(--white);
 `
 
 const Top = styled.div`
@@ -75,10 +74,10 @@ const Center = styled.nav`
 
 const NavLink = styled.a`
   text-transform: uppercase;
-  font-weight: ${WEIGHTS.medium};
+  font-weight: var(--medium-weight);
   color: ${p => p.selectedLink
-    ? COLORS.secondary
-    : COLORS.gray[900]
+    ? "var(--secondary)"
+    : "var(--gray-900)"
     };
   text-decoration: none;
   line-height: 1;
@@ -95,7 +94,7 @@ const BottomNav = styled.footer`
 
 const BottomLink = styled.a`
   font-size: ${14 / 16}rem;
-  color: ${COLORS.gray[700]};
+  color: var(--gray-700);
   text-decoration: none;
   line-height: 1;
 `

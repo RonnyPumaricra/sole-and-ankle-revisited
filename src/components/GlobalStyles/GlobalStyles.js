@@ -76,6 +76,25 @@ html {
 html, body, #root {
   height: 100%;
 }
+
+/* Theming */
+:root {
+  /* Colors */
+  --white: hsl(0deg 0% 100%);
+  --gray-100: hsl(185deg 5% 95%);
+  --gray-300: hsl(190deg 5% 80%);
+  --gray-500: hsl(196deg 4% 60%);
+  --gray-700: hsl(220deg 5% 40%);
+  --gray-900-fragment: 220deg 3% 20%;
+  --gray-900: hsl(var(--gray-900-fragment));
+  --primary: hsl(340deg 65% 47%);
+  --secondary: hsl(240deg 60% 63%);
+
+  /* WEIGHTS */
+  --normal-weight: 500;
+  --medium-weight: 600;
+  --bold-weight: 800;
+}
 `;
 
 export default GlobalStyles;
